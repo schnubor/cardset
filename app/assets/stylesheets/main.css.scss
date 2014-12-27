@@ -1,0 +1,70 @@
+@import url(http://fonts.googleapis.com/css?family=Oswald:400,700,300);
+@import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400);
+
+$red: #ff593c;
+$dark-red: #dc4c33;
+
+body{
+  background-color: #F0F0F0;
+  font-family: 'Source Code Pro', sans-serif;
+}
+
+.btn{
+  border-radius: 4px;
+}
+
+.btn-primary{
+  background-color: $red;
+  border-color: $red;
+  font-weight: lighter;
+
+  &:hover{
+    background-color: $dark-red;
+    border-color: #d33d20;
+  }
+}
+
+.btn-default{
+  background-color: transparent;
+  border-color: $red;
+  color: $red;
+  font-weight: lighter;
+
+  &:hover{
+    background-color: transparent;
+    border-color: $dark-red;
+    color: $dark-red;
+  }
+}
+#logo{
+  font-family: 'Source Code Pro', sans-serif;
+  color: white;
+  margin-top: 50px;
+
+  &.big{
+    color: #404040;
+    font-weight: lighter;
+    font-size: 72px;
+  }
+
+  .red{
+    color: $red;
+  } 
+}
+
+header{
+  padding-bottom: 40px;
+
+  h2{
+    font-weight: lighter;
+    font-size: 24px;
+    margin-bottom: 70px;
+  }
+}
+
+section{
+  height: 300px;
+  &.description{
+    background-color: $red;
+  }
+}

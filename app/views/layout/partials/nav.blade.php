@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">CARDSET</a>
+      <a class="navbar-brand" href="#" id="logo"><span class="red">C</span>ARDSET</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
