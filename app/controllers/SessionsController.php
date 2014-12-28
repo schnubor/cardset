@@ -21,7 +21,7 @@ class SessionsController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('login');
 	}
 
 	/**
@@ -32,7 +32,21 @@ class SessionsController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$validator = Validator::make(Input::all(),[
+			'username' => 'required',
+			'password' => 'required'
+		]);
+
+		if($validator->fails()){
+			return Redirect::back()
+				->withErrors($validator)
+				->withInput();
+		}
+
+		if (Auth::attempt(array('username' => Input::get('username'), 'password' => Input::get('password'))))
+		{
+		  return Redirect::intended('/dashboard');
+		}
 	}
 
 	/**

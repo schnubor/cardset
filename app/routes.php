@@ -12,21 +12,43 @@
 */
 
 Route::get('/', [
-  'as' => 'home',
-  'uses' => 'HomeController@home'
-]);
+    'as' => 'home',
+    'uses' => 'HomeController@home'
+  ]);
 
-Route::get('/register', [
-  'as' => 'register',
-  'uses' => 'UsersController@create'
-]);
+// Unauthenticated Group
+//-----------------------------------------------------
 
-Route::post('/register', [
-  'as' => 'register',
-  'uses' => 'UsersController@store'
-]);
+Route::group(array('before' => 'guest'), function()
+{
+  Route::get('/register', [
+    'as' => 'register',
+    'uses' => 'UsersController@create'
+  ]);
 
-Route::get('/login', [
-  'as' => 'login',
-  'uses' => 'SessionsController@create'
-]);
+  Route::post('/register', [
+    'as' => 'register',
+    'uses' => 'UsersController@store'
+  ]);
+
+  Route::get('/login', [
+    'as' => 'login',
+    'uses' => 'SessionsController@create'
+  ]);
+
+  Route::post('/login', [
+    'as' => 'login',
+    'uses' => 'SessionsController@store'
+  ]);
+});
+
+// Authenticated Group
+//-----------------------------------------------------
+
+Route::group(array('before' => 'auth'), function()
+{
+  Route::get('/dashboard', [
+    'as' => 'dashboard',
+    'uses' => 'UsersController@show'
+  ]);
+});
