@@ -16,11 +16,11 @@
   		<h1 id="logo" class="big"><span class="red">C</span>ARDSET</h1>
   		<h2>A clean and simple cue card solution.</h2>
 
-  		<button class="btn btn-lg btn-primary">Register</button>
-  		<button class="btn btn-lg btn-default">Sign in</button>
+  		<a href="{{ URL::route('register') }}" class="btn btn-lg btn-primary">Register</a>
+  		<a href="{{ URL::route('login') }}" class="btn btn-lg btn-default">Sign in</a>
   	</header>
   </div>
-  
+
 	<section class="description">
 		
 	</section>

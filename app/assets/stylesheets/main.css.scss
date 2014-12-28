@@ -5,8 +5,11 @@ $red: #ff593c;
 $dark-red: #dc4c33;
 
 body{
-  background-color: #F0F0F0;
   font-family: 'Source Code Pro', sans-serif;
+}
+
+.topMargin{
+  margin-top: 100px;
 }
 
 .btn{
@@ -36,15 +39,16 @@ body{
     color: $dark-red;
   }
 }
+
 #logo{
   font-family: 'Source Code Pro', sans-serif;
   color: white;
-  margin-top: 50px;
 
   &.big{
     color: #404040;
     font-weight: lighter;
     font-size: 72px;
+    margin-top: 50px;
   }
 
   .red{

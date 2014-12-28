@@ -15,3 +15,18 @@ Route::get('/', [
   'as' => 'home',
   'uses' => 'HomeController@home'
 ]);
+
+Route::get('/register', [
+  'as' => 'register',
+  'uses' => 'UsersController@create'
+]);
+
+Route::post('/register', [
+  'as' => 'register',
+  'uses' => 'UsersController@store'
+]);
+
+Route::get('/login', [
+  'as' => 'login',
+  'uses' => 'SessionsController@create'
+]);
