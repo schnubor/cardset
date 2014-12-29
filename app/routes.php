@@ -51,4 +51,9 @@ Route::group(array('before' => 'auth'), function()
     'as' => 'dashboard',
     'uses' => 'UsersController@show'
   ]);
+
+  Route::get('/sets/create', [
+    'as' => 'sets-create',
+    'uses' => 'SetsController@create'
+  ]);
 });
