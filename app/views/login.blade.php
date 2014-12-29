@@ -6,7 +6,7 @@ Login
 
 @section('content')
   <div class="container">
-    <div class="row topMargin">
+    <div class="row top100">
       <div class="col-md-4 col-md-offset-4 well">
         <legend>Login</legend>
         {{ Form::open(array('route' => 'login')) }}
