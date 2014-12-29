@@ -21,7 +21,7 @@
               <li><a href="{{ URL::route('dashboard') }}">Dashboard</a></li>
               <li><a href="#">Settings</a></li>
               <li class="divider"></li>
-              <li><a href="#">Sign out</a></li>
+              <li><a href="{{ URL::route('logout') }}">Sign out</a></li>
             </ul>
           </li>
         </ul>

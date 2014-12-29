@@ -53,7 +53,17 @@ Route::group(array('before' => 'auth'), function()
   ]);
 
   Route::get('/sets/create', [
-    'as' => 'sets-create',
+    'as' => 'create-set',
     'uses' => 'SetsController@create'
+  ]);
+
+  Route::post('/sets/create', [
+    'as' => 'store-set',
+    'uses' => 'SetsController@store'
+  ]);
+
+  Route::get('/logout', [
+    'as' => 'logout',
+    'uses' => 'SessionsController@destroy'
   ]);
 });

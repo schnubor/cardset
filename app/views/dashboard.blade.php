@@ -9,7 +9,7 @@ Dashboard
     <div class="container">
       <h1>Your Cardsets</h1>
       <p>Welcome back, {{ Auth::user()->username }}.</p>
-      <a href="{{ URL::route('sets-create') }}" class="btn btn-lg btn-default"><i class="fa fa-plus"></i> Create New Set</a>
+      <a href="{{ URL::route('create-set') }}" class="btn btn-lg btn-default"><i class="fa fa-plus"></i> Create New Set</a>
     </div>
   </div>
 

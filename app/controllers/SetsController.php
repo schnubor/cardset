@@ -21,7 +21,7 @@ class SetsController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('sets.create');
 	}
 
 	/**
@@ -32,7 +32,23 @@ class SetsController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$validator = Validator::make(Input::all(),[
+			'title' => 'required|max:60'
+		]);
+
+		if($validator->fails()){
+			return Redirect::back()
+				->withErrors($validator)
+				->withInput();
+		}
+
+		Set::create([
+			'title' => Input::get('title'),
+			'description' => Input::get('description'),
+			'user_id' => Input::get('user_id')
+		]);
+
+		return Redirect::route('dashboard');
 	}
 
 	/**

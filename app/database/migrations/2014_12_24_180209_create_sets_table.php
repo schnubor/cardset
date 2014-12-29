@@ -16,9 +16,9 @@ class CreateSetsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('user_id');
-			$table->text('description');
+			$table->text('description')->nullable();
 			$table->string('title', 60);
-			$table->integer('views');
+			$table->integer('views')->default(0);
 			$table->timestamps();
 		});
 	}
