@@ -45,7 +45,7 @@ class SessionsController extends \BaseController {
 
 		if (Auth::attempt(array('username' => Input::get('username'), 'password' => Input::get('password'))))
 		{
-		  return Redirect::intended('/dashboard');
+		  return Redirect::intended('/');
 		}
 	}
 

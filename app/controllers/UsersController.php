@@ -63,9 +63,14 @@ class UsersController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show()
+	public function show($id)
 	{
-		return View::make('dashboard');
+		$user = User::find($id);
+		$sets = $user->sets;
+
+		return View::make('dashboard')
+			->with('user', $user)
+			->with('sets', $sets);
 	}
 
 	/**

@@ -47,7 +47,7 @@ Route::group(array('before' => 'guest'), function()
 
 Route::group(array('before' => 'auth'), function()
 {
-  Route::get('/dashboard', [
+  Route::get('/users/{id}', [
     'as' => 'dashboard',
     'uses' => 'UsersController@show'
   ]);
