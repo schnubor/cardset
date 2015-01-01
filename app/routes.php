@@ -62,6 +62,16 @@ Route::group(array('before' => 'auth'), function()
     'uses' => 'SetsController@store'
   ]);
 
+  Route::get('/cards/create', [
+    'as' => 'create-card',
+    'uses' => 'CardsController@create'
+  ]);
+
+  Route::post('/cards/create', [
+    'as' => 'store-card',
+    'uses' => 'CardsController@store'
+  ]);
+
   Route::get('/logout', [
     'as' => 'logout',
     'uses' => 'SessionsController@destroy'

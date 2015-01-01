@@ -1,10 +1,10 @@
 <?php
 
-class UsersController extends \BaseController {
+class CardsController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
-	 * GET /users
+	 * GET /sets
 	 *
 	 * @return Response
 	 */
@@ -15,28 +15,27 @@ class UsersController extends \BaseController {
 
 	/**
 	 * Show the form for creating a new resource.
-	 * GET /register
+	 * GET /sets/create
 	 *
 	 * @return Response
 	 */
 	public function create()
 	{
-		return View::make('register');
+		$sets = Auth::user()->sets;
+		return View::make('cards.create')
+			->with('sets', $sets);
 	}
 
 	/**
 	 * Store a newly created resource in storage.
-	 * POST /users
+	 * POST /sets
 	 *
 	 * @return Response
 	 */
 	public function store()
 	{
 		$validator = Validator::make(Input::all(),[
-			'username' => 'required|unique:users|max:60',
-			'email' => 'required|email|unique:users',
-			'password' => 'required|min:6',
-			'password_again' => 'required|same:password'
+			'title' => 'required|max:60'
 		]);
 
 		if($validator->fails()){
@@ -45,39 +44,32 @@ class UsersController extends \BaseController {
 				->withInput();
 		}
 
-		User::create([
-			'username' => Input::get('username'),
-			'email' => Input::get('email'),
-			'password' => Hash::make(Input::get('password')),
-			'active' => true
+		Card::create([
+			'title' => Input::get('title'),
+			'front' => Input::get('front'),
+			'back' => Input::get('back'),
+			'user_id' => Input::get('user_id'),
+			'set_id' => Input::get('set_id')
 		]);
 
-		Flash::success('Congratulations! You are now signed in.');
-		return Redirect::route('home');
+		return Redirect::route('dashboard', Auth::user()->id);
 	}
 
 	/**
 	 * Display the specified resource.
-	 * GET /users/{id}
+	 * GET /sets/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function show($id)
 	{
-		$user = User::find($id);
-		$sets = $user->sets;
-		$cards = $user->cards;
-
-		return View::make('dashboard')
-			->with('user', $user)
-			->with('sets', $sets)
-			->with('cards', $cards);
+		//
 	}
 
 	/**
 	 * Show the form for editing the specified resource.
-	 * GET /users/{id}/edit
+	 * GET /sets/{id}/edit
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -89,7 +81,7 @@ class UsersController extends \BaseController {
 
 	/**
 	 * Update the specified resource in storage.
-	 * PUT /users/{id}
+	 * PUT /sets/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -101,7 +93,7 @@ class UsersController extends \BaseController {
 
 	/**
 	 * Remove the specified resource from storage.
-	 * DELETE /users/{id}
+	 * DELETE /sets/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response

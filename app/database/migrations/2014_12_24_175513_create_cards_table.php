@@ -17,10 +17,10 @@ class CreateCardsTable extends Migration {
 			$table->increments('id');
 			$table->integer('user_id');
 			$table->integer('set_id');
-			$table->text('front');
-			$table->text('back');
+			$table->text('front')->nullable();
+			$table->text('back')->nullable();
 			$table->string('title', 60);
-			$table->integer('views');
+			$table->integer('views')->default(0);
 			$table->timestamps();
 		});
 	}
