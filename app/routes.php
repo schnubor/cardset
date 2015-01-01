@@ -47,9 +47,17 @@ Route::group(array('before' => 'guest'), function()
 
 Route::group(array('before' => 'auth'), function()
 {
+
+  // User
   Route::get('/users/{id}', [
     'as' => 'dashboard',
     'uses' => 'UsersController@show'
+  ]);
+
+  // Cardsets
+  Route::get('/sets/{id}', [
+    'as' => 'show-set',
+    'uses' => 'SetsController@show'
   ]);
 
   Route::get('/sets/create', [
@@ -62,6 +70,17 @@ Route::group(array('before' => 'auth'), function()
     'uses' => 'SetsController@store'
   ]);
 
+  Route::delete('/sets/{id}', [
+    'as' => 'delete-set',
+    'uses' => 'SetsController@delete'
+  ]);
+
+  // Cards
+  Route::get('/cards/{id}', [
+    'as' => 'show-card',
+    'uses' => 'CardsController@show'
+  ]);
+
   Route::get('/cards/create', [
     'as' => 'create-card',
     'uses' => 'CardsController@create'
@@ -72,6 +91,12 @@ Route::group(array('before' => 'auth'), function()
     'uses' => 'CardsController@store'
   ]);
 
+  Route::delete('/cards/{id}', [
+    'as' => 'delete-card',
+    'uses' => 'CardsController@delete'
+  ]);
+
+  // Session
   Route::get('/logout', [
     'as' => 'logout',
     'uses' => 'SessionsController@destroy'

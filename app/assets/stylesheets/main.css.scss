@@ -3,6 +3,8 @@
 
 $red: #ff593c;
 $dark-red: #dc4c33;
+$grey: #DDD;
+$dark-grey: #BBB;
 
 body{
   font-family: 'Source Code Pro', sans-serif;
@@ -27,7 +29,19 @@ body{
 
   &:hover{
     background-color: $dark-red;
-    border-color: #d33d20;
+    border-color: $dark-red;
+  }
+}
+
+.btn-danger{
+  color: $grey;
+  background-color: transparent;
+  border-color: $grey;
+
+  &:hover{
+    color: $dark-grey;
+    border-color: $dark-grey;
+    background-color: transparent;
   }
 }
 

@@ -10,7 +10,7 @@ Dashboard
       <h1>Your Cardsets</h1>
       <p>Welcome back, {{ Auth::user()->username }}.</p>
       <a href="{{ URL::route('create-set') }}" class="btn btn-lg btn-primary"><i class="fa fa-plus"></i> Create New Set</a>
-      <a href="{{ URL::route('create-card') }}" class="btn btn-lg btn-default">Add Card To Set</a>
+      <a href="{{ URL::route('create-card') }}" class="btn btn-lg btn-default">Add Cards</a>
     </div>
   </div>
 
@@ -26,13 +26,14 @@ Dashboard
 
             <div class="panel-body">
               <p>{{ $set->description }}</p>
-              <a href="" class="btn btn-md btn-primary">Open Set</a>
+              <a href="{{ URL::route('show-set', $set->id) }}" class="btn btn-md btn-primary">Open Set</a>
               <a href="{{ URL::route('create-card') }}" class="btn btn-md btn-default">Add Card</a>
+              <a href="" class="btn btn-md btn-danger"><i class="fa fa-trash"></i></a>
             </div>
 
             <!-- List group -->
             <ul class="list-group">
-              @foreach($cards as $card)
+              @foreach($cards->slice(0,3) as $card)
                 <li class="list-group-item">{{ $card->title }}</li>
               @endforeach
             </ul>
