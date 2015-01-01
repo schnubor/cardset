@@ -9,8 +9,8 @@ Dashboard
     <div class="container">
       <h1>Your Cardsets</h1>
       <p>Welcome back, {{ Auth::user()->username }}.</p>
-      <a href="{{ URL::route('create-set') }}" class="btn btn-lg btn-primary"><i class="fa fa-plus"></i> Create New Set</a>
-      <a href="{{ URL::route('create-card') }}" class="btn btn-lg btn-default">Add Cards</a>
+      <a href="{{ URL::route('sets.create') }}" class="btn btn-lg btn-primary"><i class="fa fa-plus"></i> Create New Set</a>
+      <a href="{{ URL::route('cards.create') }}" class="btn btn-lg btn-default">Add Cards</a>
     </div>
   </div>
 
@@ -26,9 +26,12 @@ Dashboard
 
             <div class="panel-body">
               <p>{{ $set->description }}</p>
-              <a href="{{ URL::route('show-set', $set->id) }}" class="btn btn-md btn-primary">Open Set</a>
-              <a href="{{ URL::route('create-card') }}" class="btn btn-md btn-default">Add Card</a>
-              <a href="" class="btn btn-md btn-danger"><i class="fa fa-trash"></i></a>
+              <a href="{{ URL::route('sets.show', $set->id) }}" class="btn btn-md btn-primary">Open Set</a>
+              <a href="{{ URL::route('cards.create') }}" class="btn btn-md btn-default">Add Card</a>
+              <a href="{{ URL::route('sets.edit', $set->id) }}" class="btn btn-md btn-danger"><i class="fa fa-pencil"></i></a>
+              {{ Form::open(['route' => ['sets.destroy', $set->id], 'method' => 'delete', 'class' => 'inline', 'onsubmit' => 'return confirm("Do you really want to delete the entire set (cards included)?");']) }}
+                <button type="submit" class="btn btn-md btn-danger"><i class="fa fa-trash"></i></button>
+              {{ Form::close() }}
             </div>
 
             <!-- List group -->

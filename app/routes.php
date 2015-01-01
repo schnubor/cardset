@@ -54,47 +54,11 @@ Route::group(array('before' => 'auth'), function()
     'uses' => 'UsersController@show'
   ]);
 
-  // Cardsets
-  Route::get('/sets/{id}', [
-    'as' => 'show-set',
-    'uses' => 'SetsController@show'
-  ]);
-
-  Route::get('/sets/create', [
-    'as' => 'create-set',
-    'uses' => 'SetsController@create'
-  ]);
-
-  Route::post('/sets/create', [
-    'as' => 'store-set',
-    'uses' => 'SetsController@store'
-  ]);
-
-  Route::delete('/sets/{id}', [
-    'as' => 'delete-set',
-    'uses' => 'SetsController@delete'
-  ]);
+  // Sets
+  Route::resource('sets', 'SetsController');
 
   // Cards
-  Route::get('/cards/{id}', [
-    'as' => 'show-card',
-    'uses' => 'CardsController@show'
-  ]);
-
-  Route::get('/cards/create', [
-    'as' => 'create-card',
-    'uses' => 'CardsController@create'
-  ]);
-
-  Route::post('/cards/create', [
-    'as' => 'store-card',
-    'uses' => 'CardsController@store'
-  ]);
-
-  Route::delete('/cards/{id}', [
-    'as' => 'delete-card',
-    'uses' => 'CardsController@delete'
-  ]);
+  Route::resource('cards', 'CardsController');
 
   // Session
   Route::get('/logout', [

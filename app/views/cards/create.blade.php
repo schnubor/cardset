@@ -9,7 +9,7 @@ Create Card
     <div class="row top100">
       <div class="col-md-4 col-md-offset-4 well">
         <legend>Add A New Card</legend>
-        {{ Form::open(array('route' => 'store-card')) }}
+        {{ Form::open(array('route' => 'cards.store')) }}
           <div class="form-group">
             <label for="title">Headline</label>
             <input type="text" class="form-control" name="title" placeholder="Enter Headline">

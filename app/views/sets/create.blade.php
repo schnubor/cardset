@@ -9,7 +9,7 @@ Create Set
     <div class="row top100">
       <div class="col-md-4 col-md-offset-4 well">
         <legend>Create Cardset</legend>
-        {{ Form::open(array('route' => 'store-set')) }}
+        {{ Form::open(array('route' => 'sets.store')) }}
           <div class="form-group">
             <label for="title">Title</label>
             <input type="text" class="form-control" name="title" placeholder="Enter Title">

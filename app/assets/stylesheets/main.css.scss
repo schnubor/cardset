@@ -18,6 +18,10 @@ body{
   margin-top: 100px;
 }
 
+.inline{
+  display: inline;
+}
+
 .btn{
   border-radius: 4px;
 }
@@ -42,6 +46,16 @@ body{
     color: $dark-grey;
     border-color: $dark-grey;
     background-color: transparent;
+  }
+
+  &:focus{
+    background-color: transparent;
+    color: $dark-grey;
+  }
+
+  &:active{
+    background-color: transparent;
+    color: $dark-grey;
   }
 }
 
