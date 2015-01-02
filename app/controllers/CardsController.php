@@ -52,7 +52,7 @@ class CardsController extends \BaseController {
 			'set_id' => Input::get('set_id')
 		]);
 
-		return Redirect::route('dashboard', Auth::user()->id);
+		return Redirect::route('users.show', Auth::user()->id);
 	}
 
 	/**

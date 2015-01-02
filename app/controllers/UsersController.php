@@ -21,7 +21,7 @@ class UsersController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('register');
+		return View::make('users.create');
 	}
 
 	/**
@@ -69,7 +69,7 @@ class UsersController extends \BaseController {
 		$sets = $user->sets;
 		$cards = $user->cards;
 
-		return View::make('dashboard')
+		return View::make('users.show')
 			->with('user', $user)
 			->with('sets', $sets)
 			->with('cards', $cards);

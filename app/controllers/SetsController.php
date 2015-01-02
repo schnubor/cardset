@@ -48,7 +48,7 @@ class SetsController extends \BaseController {
 			'user_id' => Input::get('user_id')
 		]);
 
-		return Redirect::route('dashboard');
+		return Redirect::route('users.show', Auth::user()->id);
 	}
 
 	/**
@@ -72,7 +72,10 @@ class SetsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$set = Set::find($id);
+
+		return View::make('sets.edit')
+			->with('set', $set);
 	}
 
 	/**
@@ -84,7 +87,22 @@ class SetsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$validator = Validator::make(Input::all(),[
+			'title' => 'required|max:60'
+		]);
+
+		if($validator->fails()){
+			return Redirect::back()
+				->withErrors($validator)
+				->withInput();
+		}
+
+		$set = Set::find($id);
+		$set->title = Input::get('title');
+		$set->description = Input::get('description');
+		$set->save();
+
+		return Redirect::route('users.show', Auth::user()->id);
 	}
 
 	/**
