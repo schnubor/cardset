@@ -49,10 +49,7 @@ Route::group(array('before' => 'auth'), function()
 {
 
   // User
-  Route::get('/users/{id}', [
-    'as' => 'dashboard',
-    'uses' => 'UsersController@show'
-  ]);
+  Route::resource('users', 'UsersController');
 
   // Sets
   Route::resource('sets', 'SetsController');

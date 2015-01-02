@@ -18,7 +18,7 @@ class HomeController extends BaseController {
 	public function home()
 	{
 		if(Auth::check()){
-			return Redirect::route('dashboard', Auth::user()->id);
+			return Redirect::route('users.show', Auth::user()->id);
 		}
 		
 		return View::make('home');
