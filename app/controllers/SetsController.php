@@ -60,7 +60,12 @@ class SetsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$set = Set::find($id);
+		$cards = $set->cards;
+
+		return View::make('sets.show')
+			->with('set', $set)
+			->with('cards', $cards); 
 	}
 
 	/**
