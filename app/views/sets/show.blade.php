@@ -34,8 +34,12 @@ Create Set
 
             <!-- List group -->
             <ul class="list-group">
-              <li class="list-group-item">{{ $card->front }}</li>
-              <li class="list-group-item">{{ $card->back }}</li>
+              @if(!empty($card->front))
+                <li class="list-group-item">{{ $card->front }}</li>
+              @endif
+              @if(!empty($card->back))
+                <li class="list-group-item">{{ $card->back }}</li>
+              @endif
             </ul>
           </div>
         </div>

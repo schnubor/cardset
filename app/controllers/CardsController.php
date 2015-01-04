@@ -76,7 +76,12 @@ class CardsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$card = Card::find($id);
+		$sets = Set::all();
+
+		return View::make('cards.edit')
+			->with('card', $card)
+			->with('sets', $sets);
 	}
 
 	/**
@@ -88,7 +93,24 @@ class CardsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$validator = Validator::make(Input::all(),[
+			'title' => 'required|max:60'
+		]);
+
+		if($validator->fails()){
+			return Redirect::back()
+				->withErrors($validator)
+				->withInput();
+		}
+
+		$card = Card::find($id);
+		$card->title = Input::get('title');
+		$card->front = Input::get('front');
+		$card->back = Input::get('back');
+		$card->set_id = Input::get('set_id');
+		$card->save();
+
+		return Redirect::route('cards.show', $id);
 	}
 
 	/**
