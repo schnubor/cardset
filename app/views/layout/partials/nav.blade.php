@@ -18,10 +18,10 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->username }}<span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="{{ URL::route('users.show', Auth::user()->id) }}">Dashboard</a></li>
-              <li><a href="#">Settings</a></li>
+              <li><a href="{{ URL::route('users.show', Auth::user()->id) }}"><i class="fa fa-th-large"></i> Dashboard</a></li>
+              <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
               <li class="divider"></li>
-              <li><a href="{{ URL::route('logout') }}">Sign out</a></li>
+              <li><a href="{{ URL::route('logout') }}"><i class="fa fa-sign-out"></i> Sign out</a></li>
             </ul>
           </li>
         </ul>
