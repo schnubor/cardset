@@ -1,7 +1,7 @@
 @extends('layout.default')
 
 @section('title')
-Create Set
+{{ $set->title }}
 @stop
 
 @section('content')
@@ -11,6 +11,7 @@ Create Set
       <p>{{ $set->description }}.</p>
       <a href="{{ URL::route('cards.create') }}" class="btn btn-lg btn-primary">Add Cards</a>
       <a href="{{ URL::route('users.show', Auth::user()->id) }}" class="btn btn-lg btn-default">Back To Sets</a>
+      <button type="button" class="btn btn-default btn-lg" disabled="disabled"><i class="fa fa-eye"></i>  {{ $set->views }} views</button>
     </div>
   </div>
 
@@ -25,8 +26,8 @@ Create Set
             </div>
 
             <div class="panel-body">
-              <a href="{{ URL::route('cards.show', $set->id) }}" class="btn btn-md btn-primary">View Card</a>
-              <a href="{{ URL::route('cards.edit', $set->id) }}" class="btn btn-md btn-danger"><i class="fa fa-pencil"></i></a>
+              <a href="{{ URL::route('cards.show', $card->id) }}" class="btn btn-md btn-primary">View Card</a>
+              <a href="{{ URL::route('cards.edit', $card->id) }}" class="btn btn-md btn-danger"><i class="fa fa-pencil"></i></a>
               {{ Form::open(['route' => ['cards.destroy', $card->id], 'method' => 'delete', 'class' => 'inline', 'onsubmit' => 'return confirm("Do you really want to delete this card?");']) }}
                 <button type="submit" class="btn btn-md btn-danger"><i class="fa fa-trash"></i></button>
               {{ Form::close() }}

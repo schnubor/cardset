@@ -64,7 +64,13 @@ class CardsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$card =  Card::find($id);
+		$card->views += 1;
+		$card->save();
+
+		return View::make('cards.show')
+			->with('card', $card);
+
 	}
 
 	/**

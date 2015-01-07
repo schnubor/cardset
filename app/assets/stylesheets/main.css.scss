@@ -72,6 +72,12 @@ body{
   }
 }
 
+.btn-default[disabled]{
+  background-color: transparent;
+  color: #606060;
+  border-color: #606060;
+}
+
 #logo{
   font-family: 'Source Code Pro', sans-serif;
   color: white;
